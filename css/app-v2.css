@@ -1,0 +1,82 @@
+@import url('./app.css?v=0.1.0');
+
+.global-message[data-kind="success"]{
+  background:rgba(111,214,162,.11);
+  border-color:rgba(111,214,162,.28);
+  color:#baf0d5;
+}
+
+.help-button{
+  width:100%;
+  min-height:42px;
+  margin-bottom:12px;
+  padding:0 12px;
+  border:1px solid rgba(158,220,244,.24);
+  border-radius:12px;
+  background:rgba(158,220,244,.07);
+  color:#d9f4ff;
+  font-weight:800;
+}
+.help-button:hover{background:rgba(158,220,244,.12)}
+
+#operatorsBody tr[data-operator-id],#olpBody tr[data-olp-id]{cursor:pointer}
+#operatorsBody tr[data-operator-id]:focus-within,#olpBody tr[data-olp-id]:focus-within{outline:1px solid rgba(158,220,244,.25);outline-offset:-1px}
+
+.calendar-cell{
+  width:100%;
+  border:0;
+  color:inherit;
+  font:inherit;
+  cursor:pointer;
+}
+.calendar-cell.holiday{
+  background:rgba(158,220,244,.07);
+  color:#a9cfe0;
+  cursor:default;
+}
+.holiday-head{background:rgba(158,220,244,.07)!important}
+.calendar-empty{
+  width:100%;
+  min-height:38px;
+  border:1px dashed transparent;
+  border-radius:8px;
+  background:transparent;
+  color:#506575;
+  font-size:17px;
+}
+.calendar-empty:hover,.calendar-empty:focus-visible{
+  border-color:rgba(158,220,244,.25);
+  background:rgba(158,220,244,.05);
+  color:#9edcf4;
+  outline:none;
+}
+.calendar-table td:first-child small{display:block;margin-top:3px;color:#64798a;font-weight:500}
+
+.dialog-note{
+  margin:0;
+  padding:12px 13px;
+  border:1px solid rgba(158,220,244,.13);
+  border-radius:12px;
+  background:rgba(158,220,244,.05);
+  color:#9fb4c3;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.help-dialog{width:min(590px,calc(100vw - 30px))}
+.help-content{padding:22px}
+.help-content>p{color:#a8bac8;line-height:1.55;margin:20px 0 14px}
+.help-actions{display:grid;grid-template-columns:1fr;gap:10px}
+.help-link{
+  min-height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  text-decoration:none;
+}
+
+@media(max-width:820px){
+  .toolbar-actions{width:100%;flex-wrap:wrap}
+  .toolbar-actions .primary,.toolbar-actions .secondary{flex:1 1 180px}
+}
