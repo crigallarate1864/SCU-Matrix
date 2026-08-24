@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#081019">
+  <title>ATLAS SCU · Accesso</title>
+  <link rel="icon" href="assets/atlas-scu-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/login.css?v=0.1.0">
+</head>
+<body>
+  <main class="login-layout">
+    <section class="hero-panel">
+      <div class="brand-row">
+        <img src="assets/atlas-scu-logo.svg" alt="ATLAS SCU · CRI Gallarate" class="brand-logo">
+        <span class="release">ALPHA 0.1</span>
+      </div>
+
+      <div class="hero-copy">
+        <span class="eyebrow">Servizio Civile Universale</span>
+        <h1>Presenze, ore e adempimenti.<br><span>In un unico posto.</span></h1>
+        <p>ATLAS SCU centralizza calendario, operatori, OLP, assenze, formazione e scadenze del progetto.</p>
+      </div>
+
+      <div class="rule-grid" aria-label="Regole principali SCU">
+        <article><strong>1145 h</strong><span>monte ore progetto</span></article>
+        <article><strong>5 giorni</strong><span>servizio settimanale</span></article>
+        <article><strong>3–8 h</strong><span>durata turno</span></article>
+        <article><strong>10 h</strong><span>copresenza OLP/settimana</span></article>
+      </div>
+    </section>
+
+    <section class="login-panel">
+      <form id="loginForm" class="login-card" novalidate>
+        <div class="login-heading">
+          <span>AMMINISTRATORE SCU</span>
+          <h2>Accesso riservato</h2>
+          <p>Inserisci le credenziali configurate nel backend ATLAS SCU.</p>
+        </div>
+
+        <label class="field">
+          <span>Nome utente</span>
+          <input id="username" name="username" autocomplete="username" autocapitalize="none" required>
+        </label>
+
+        <label class="field">
+          <span>Password</span>
+          <input id="password" name="password" type="password" autocomplete="current-password" required>
+        </label>
+
+        <div id="loginError" class="message error" role="alert"></div>
+        <div id="loginInfo" class="message info"></div>
+
+        <button id="loginButton" type="submit">Accedi ad ATLAS SCU</button>
+
+        <p class="security-note">I dati personali non sono memorizzati nel repository GitHub.</p>
+      </form>
+    </section>
+  </main>
+
+  <script type="module" src="js/login.js?v=0.1.0"></script>
+</body>
+</html>
