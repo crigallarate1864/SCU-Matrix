@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#081019">
+  <title>ATLAS SCU</title>
+  <link rel="icon" href="assets/atlas-scu-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/app.css?v=0.1.0">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="app-brand" href="#dashboard" aria-label="ATLAS SCU">
+        <img src="assets/atlas-scu-logo.svg" alt="ATLAS SCU · CRI Gallarate">
+      </a>
+
+      <nav class="nav" id="mainNav">
+        <button data-view="dashboard" class="active"><span>◫</span> Dashboard</button>
+        <button data-view="calendar"><span>▦</span> Calendario</button>
+        <button data-view="operators"><span>◎</span> Operatori SCU</button>
+        <button data-view="olp"><span>◉</span> OLP</button>
+        <button data-view="absences"><span>⌁</span> Assenze e permessi</button>
+        <button data-view="training"><span>◇</span> Formazione</button>
+        <button data-view="deadlines"><span>◷</span> Scadenze</button>
+        <button data-view="settings"><span>⚙</span> Impostazioni</button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="user-chip">
+          <span class="avatar">A</span>
+          <div><strong id="userName">Amministratore SCU</strong><small>Amministratore SCU</small></div>
+        </div>
+        <button id="logoutButton" class="logout">Esci</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <button id="sidebarToggle" class="icon-button" aria-label="Apri menu">☰</button>
+          <div class="heading-wrap"><span id="viewKicker">ATLAS SCU</span><h1 id="viewTitle">Dashboard</h1></div>
+        </div>
+        <div class="top-actions">
+          <span id="backendStatus" class="status-pill"><i></i> Backend</span>
+          <button id="refreshButton" class="secondary">Aggiorna</button>
+        </div>
+      </header>
+
+      <div id="globalMessage" class="global-message"></div>
+
+      <section class="view active" data-view-panel="dashboard">
+        <div class="metric-grid">
+          <article class="metric"><span>Operatori attivi</span><strong id="metricOperators">–</strong><small>nel progetto corrente</small></article>
+          <article class="metric"><span>Ore registrate</span><strong id="metricHours">–</strong><small>complessive</small></article>
+          <article class="metric"><span>Scadenze aperte</span><strong id="metricDeadlines">–</strong><small>da completare</small></article>
+          <article class="metric"><span>OLP conformi</span><strong id="metricOlp">–</strong><small>10 h/settimana</small></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="panel span-2">
+            <div class="panel-head"><div><span>ANDAMENTO</span><h2>Monte ore operatori</h2></div><button class="secondary small" data-go="operators">Apri anagrafiche</button></div>
+            <div id="hoursProgress" class="progress-list empty-state">Nessun dato caricato.</div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><div><span>CONTROLLO</span><h2>Avvisi</h2></div></div>
+            <div id="alertsList" class="alert-list empty-state">Nessun avviso.</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="view" data-view-panel="calendar">
+        <div class="toolbar">
+          <div class="month-switch"><button id="prevMonth" class="secondary">‹</button><strong id="monthLabel"></strong><button id="nextMonth" class="secondary">›</button></div>
+          <div class="toolbar-actions"><button id="newCalendarEntry" class="primary">+ Inserisci giornata</button></div>
+        </div>
+        <article class="panel calendar-panel"><div id="calendarMatrix" class="calendar-matrix empty-state">Caricamento calendario…</div></article>
+      </section>
+
+      <section class="view" data-view-panel="operators">
+        <div class="toolbar"><div><h2>Operatori SCU</h2><p>Anagrafiche, periodo di servizio e monte ore.</p></div><button id="newOperator" class="primary">+ Nuovo operatore</button></div>
+        <article class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Operatore</th><th>Progetto</th><th>Servizio</th><th>Ore</th><th>Permessi</th><th>Stato</th></tr></thead><tbody id="operatorsBody"></tbody></table></div></article>
+      </section>
+
+      <section class="view" data-view-panel="olp">
+        <div class="toolbar"><div><h2>OLP</h2><p>Gestione OLP e controllo della copresenza settimanale.</p></div><button id="newOlp" class="primary">+ Nuovo OLP</button></div>
+        <article class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>OLP</th><th>Progetto</th><th>Periodo</th><th>Copresenza settimana</th><th>Stato</th></tr></thead><tbody id="olpBody"></tbody></table></div></article>
+      </section>
+
+      <section class="view" data-view-panel="absences">
+        <div class="toolbar"><div><h2>Assenze e permessi</h2><p>Permessi ordinari, straordinari, malattia e riposi compensativi.</p></div><button id="newAbsence" class="primary">+ Registra assenza</button></div>
+        <article class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Data</th><th>Operatore</th><th>Tipo</th><th>Ore previste</th><th>Ore riconosciute</th><th>Documentazione</th></tr></thead><tbody id="absencesBody"></tbody></table></div></article>
+      </section>
+
+      <section class="view" data-view-panel="training">
+        <div class="toolbar"><div><h2>Formazione</h2><p>Generale, specifica e tutoraggio.</p></div><button id="newTraining" class="primary">+ Registra formazione</button></div>
+        <div id="trainingCards" class="training-grid empty-state">Nessun dato di formazione.</div>
+      </section>
+
+      <section class="view" data-view-panel="deadlines">
+        <div class="toolbar"><div><h2>Scadenze e adempimenti</h2><p>Controllo documentale e attività periodiche.</p></div><button id="newDeadline" class="primary">+ Nuova scadenza</button></div>
+        <article class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Scadenza</th><th>Tipo</th><th>Descrizione</th><th>Riferimento</th><th>Stato</th></tr></thead><tbody id="deadlinesBody"></tbody></table></div></article>
+      </section>
+
+      <section class="view" data-view-panel="settings">
+        <div class="toolbar"><div><h2>Impostazioni</h2><p>Regole operative del progetto e configurazione ATLAS SCU.</p></div><button id="saveSettingsButton" class="primary">Salva impostazioni</button></div>
+        <div id="settingsGrid" class="settings-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="editorDialog" class="editor-dialog">
+    <form method="dialog" id="editorForm">
+      <div class="dialog-head"><div><span id="dialogKicker">ATLAS SCU</span><h2 id="dialogTitle">Modifica</h2></div><button value="cancel" class="dialog-close" aria-label="Chiudi">×</button></div>
+      <div id="dialogFields" class="dialog-fields"></div>
+      <div class="dialog-actions"><button value="cancel" class="secondary">Annulla</button><button id="dialogSave" value="default" class="primary">Salva</button></div>
+    </form>
+  </dialog>
+
+  <script type="module" src="js/app.js?v=0.1.0"></script>
+</body>
+</html>
