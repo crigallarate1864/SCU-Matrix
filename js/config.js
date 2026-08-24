@@ -1,9 +1,9 @@
 export const APP_NAME = 'ATLAS SCU';
 export const APP_VERSION = '0.1.0';
 
-// Compilare solo dopo la distribuzione della Web App Google Apps Script.
+// Web App Google Apps Script collegata al database ATLAS SCU.
 // L'URL /exec non contiene credenziali; le credenziali restano nel backend.
-export const APPS_SCRIPT_URL = '';
+export const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz1Rq4vwtbZNLvF-1g0OuGneyMZUwiC1ZOuqOswHp5b22Jgm1ts2TUNmJVE7HOUugdl/exec';
 
 export const SESSION_KEY = 'atlas-scu-session-v1';
 
