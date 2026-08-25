@@ -1,0 +1,59 @@
+/* ATLAS SCU v0.6 - lightweight additions */
+
+button:disabled{cursor:not-allowed;opacity:.55}
+
+/* Busy overlay: static in DOM so it is always visible and does not depend on hotfix scripts. */
+.atlas-busy-overlay{position:fixed;inset:0;z-index:99999;display:none;place-items:center;background:rgba(3,9,14,.78);backdrop-filter:blur(7px)}
+.atlas-busy-overlay.show{display:grid}
+.atlas-busy-card{width:min(480px,calc(100vw - 30px));padding:25px;border:1px solid rgba(255,255,255,.12);border-radius:20px;background:#0d1823;color:#fff;box-shadow:0 30px 90px rgba(0,0,0,.5);text-align:center}
+.atlas-busy-spinner{width:38px;height:38px;margin:0 auto 14px;border:4px solid rgba(255,255,255,.14);border-top-color:#d9273f;border-radius:50%;animation:atlasSpin .8s linear infinite}
+.atlas-busy-card strong{display:block;font-size:16px}.atlas-busy-card>span{display:block;margin-top:7px;color:#91a4b5;font-size:13px;line-height:1.45}
+.atlas-progress{height:12px;margin:18px 0 8px;border-radius:999px;overflow:hidden;background:#071019;border:1px solid rgba(255,255,255,.09)}
+.atlas-progress>i{display:block;width:0;height:100%;border-radius:999px;background:linear-gradient(90deg,#8dd8f3,#d9273f);transition:width .2s ease}
+.atlas-progress-row{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#8398aa;font-size:11px}.atlas-progress-row b{color:#e8f0f6;font-size:12px}
+body.atlas-busy{overflow:hidden}
+body.atlas-busy .app-shell{pointer-events:none;user-select:none}
+@keyframes atlasSpin{to{transform:rotate(360deg)}}
+
+/* Fast initial loading skeleton. */
+.loading-inline{display:flex;align-items:center;gap:9px;color:#8398aa;padding:16px 0;font-size:13px}
+.loading-inline:before{content:"";width:16px;height:16px;border:2px solid rgba(255,255,255,.14);border-top-color:#d9273f;border-radius:50%;animation:atlasSpin .8s linear infinite}
+
+/* Permit recap. */
+.permit-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:14px}
+.permit-card{border:1px solid var(--line);background:linear-gradient(180deg,var(--surface),#0b1620);border-radius:18px;padding:18px}
+.permit-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:14px}
+.permit-card h3{margin:0;font-size:15px}.permit-card .project{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+.permit-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.permit-metric{padding:10px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055)}
+.permit-metric span{display:block;color:#8398aa;font-size:10px;line-height:1.25}.permit-metric strong{display:block;margin-top:5px;font-size:15px}
+.permit-meter{height:6px;margin-top:7px;background:#071019;border-radius:999px;overflow:hidden}.permit-meter i{display:block;height:100%;background:linear-gradient(90deg,#8dd8f3,#d9273f);border-radius:999px}
+.permit-reference{margin-bottom:14px;padding:13px 15px;border:1px solid rgba(158,220,244,.15);background:rgba(158,220,244,.06);border-radius:14px;color:#aabfce;font-size:12px;line-height:1.55}
+.permit-reference strong{color:#e7f3fa}
+.doc-tag{display:inline-flex;padding:5px 8px;border:1px solid var(--line);border-radius:999px;font-size:10px;color:#b8c8d4;background:rgba(255,255,255,.035)}
+
+/* Generator. */
+.generator-shift-card{grid-column:span 1;padding:13px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.025)}
+.generator-shift-card h3{margin:0 0 10px;font-size:13px}.generator-shift-card .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.generator-shift-card label{display:grid;gap:5px;color:#b6c4cf;font-size:11px}.generator-shift-card input{width:100%;height:40px;border:1px solid rgba(255,255,255,.09);border-radius:9px;background:#08121b;color:#fff;padding:0 9px}
+.generator-rule{grid-column:1/-1;padding:12px 14px;border-radius:12px;background:rgba(158,220,244,.07);border:1px solid rgba(158,220,244,.14);color:#a9bdcc;font-size:12px;line-height:1.5}
+
+/* Calendar interactions. */
+.calendar-cell,.calendar-empty{width:100%;border:0;color:inherit;font:inherit;text-align:center}
+.calendar-cell{cursor:pointer}.calendar-empty{min-height:42px;border-radius:8px;background:transparent;color:#536879;font-size:18px}.calendar-empty:hover{background:rgba(255,255,255,.04);color:#bcd0dd}
+.calendar-cell.holiday{background:rgba(255,255,255,.025);color:#6d8090;cursor:default}
+.holiday-head{background:#17202a!important;color:#7f91a0!important}
+.calendar-table td:first-child small{display:block;margin-top:4px;color:#657a8c;font-size:10px;font-weight:500}
+
+/* PDF button */
+.pdf-action{border-color:rgba(158,220,244,.22);color:#d8f1fb}
+
+/* Lightweight toast/messages. */
+.global-message[data-kind="success"]{background:rgba(111,214,162,.1);border-color:rgba(111,214,162,.2);color:#baf0d5}
+
+.help-button{width:100%;height:40px;margin-bottom:10px;border-radius:11px;border:1px solid rgba(158,220,244,.18);background:rgba(158,220,244,.06);color:#cfeaf5;font-weight:800}
+.help-content{padding:22px}.help-content p{color:var(--muted);line-height:1.55}.help-actions{display:grid;gap:9px;margin-top:18px}.help-link{display:flex;align-items:center;justify-content:center;text-decoration:none;min-height:42px}
+.dialog-note{margin:0;color:#91a4b5;font-size:12px;line-height:1.5}
+
+@media(max-width:900px){.permit-summary{grid-template-columns:1fr}.permit-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.generator-shift-card{grid-column:1/-1}.permit-metrics{grid-template-columns:1fr}}
