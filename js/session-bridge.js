@@ -8,3 +8,8 @@ try {
   if (sessionValue) localStorage.setItem(SESSION_KEY, sessionValue);
   else if (savedValue) sessionStorage.setItem(SESSION_KEY, savedValue);
 } catch {}
+
+document.addEventListener('click',event=>{
+  if(!event.target.closest('#logoutButton')) return;
+  try{localStorage.removeItem(SESSION_KEY);}catch{}
+},true);
