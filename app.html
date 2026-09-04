@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#081019">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>ATLAS SCU</title>
-  <link rel="stylesheet" href="css/app-v2.css?v=0.7.0">
+  <link rel="stylesheet" href="css/app-v2.css?v=0.8.0">
 </head>
 <body>
   <div class="app-shell">
@@ -50,7 +50,17 @@
         </div>
       </section>
 
-      <section class="view" data-view-panel="calendar"><div class="toolbar"><div class="month-switch"><button id="prevMonth" class="secondary" type="button">‹</button><strong id="monthLabel"></strong><button id="nextMonth" class="secondary" type="button">›</button></div><div class="toolbar-actions"><button id="generateCalendar" class="secondary" type="button">Genera calendario</button><button id="newCalendarEntry" class="primary" type="button">+ Inserisci giornata</button></div></div><article class="panel calendar-panel"><div id="calendarMatrix" class="calendar-matrix empty-state">Caricamento calendario…</div></article></section>
+      <section class="view" data-view-panel="calendar">
+        <div class="toolbar">
+          <div class="month-switch"><button id="prevMonth" class="secondary" type="button">‹</button><strong id="monthLabel"></strong><button id="nextMonth" class="secondary" type="button">›</button></div>
+          <div class="toolbar-actions">
+            <button id="prepareMail" class="secondary" type="button">✉ Prepara mail turni</button>
+            <button id="generateCalendar" class="secondary" type="button">Genera calendario</button>
+            <button id="newCalendarEntry" class="primary" type="button">+ Inserisci giornata</button>
+          </div>
+        </div>
+        <article class="panel calendar-panel"><div id="calendarMatrix" class="calendar-matrix empty-state">Caricamento calendario…</div></article>
+      </section>
 
       <section class="view" data-view-panel="operators"><div class="toolbar"><div><h2>Operatori SCU</h2><p>Anagrafiche, periodo di servizio e monte ore. Clicca su una riga per modificarla.</p></div><button id="newOperator" class="primary" type="button">+ Nuovo operatore</button></div><article class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Operatore</th><th>Progetto</th><th>Servizio</th><th>Ore</th><th>Permessi</th><th>Stato</th><th>Azioni</th></tr></thead><tbody id="operatorsBody"></tbody></table></div></article></section>
 
@@ -70,8 +80,20 @@
 
   <dialog id="generatorDialog" class="editor-dialog"><form id="generatorForm"><div class="dialog-head"><div><span>GENERAZIONE AUTOMATICA</span><h2>Genera calendario mensile</h2></div><button id="generatorClose" type="button" class="dialog-close" aria-label="Chiudi">×</button></div><div class="dialog-fields"></div><div class="dialog-actions"><button id="generatorCancel" type="button" class="secondary">Annulla</button><button id="generatorSave" type="submit" class="primary">Genera calendario</button></div></form></dialog>
 
+  <dialog id="mailDialog" class="editor-dialog mail-dialog">
+    <div class="mail-dialog-content">
+      <div class="dialog-head"><div><span>MAIL TURNI SCU</span><h2>Mail pronta per Gmail</h2></div><button id="mailClose" type="button" class="dialog-close" aria-label="Chiudi">×</button></div>
+      <p class="dialog-note">ATLAS prepara automaticamente destinatari, oggetto e testo usando il calendario del mese visualizzato. Puoi modificare liberamente il testo prima di copiarlo.</p>
+      <label class="mail-field"><span>Destinatari · CCN consigliato</span><textarea id="mailRecipients" rows="2"></textarea><button id="copyRecipients" class="secondary small" type="button">Copia destinatari</button></label>
+      <div id="mailMissingEmails" class="mail-warning"></div>
+      <label class="mail-field"><span>Oggetto</span><input id="mailSubject" type="text"><button id="copySubject" class="secondary small" type="button">Copia oggetto</button></label>
+      <label class="mail-field"><span>Testo della mail</span><textarea id="mailBody" class="mail-body" rows="18"></textarea><button id="copyBody" class="primary" type="button">Copia testo mail</button></label>
+      <div class="dialog-actions"><button id="mailCancel" type="button" class="secondary">Chiudi</button></div>
+    </div>
+  </dialog>
+
   <dialog id="helpDialog" class="editor-dialog help-dialog"><div class="help-content"><div class="dialog-head"><div><span>ASSISTENZA ATLAS SCU</span><h2>Hai bisogno di aiuto?</h2></div><button id="helpClose" type="button" class="dialog-close" aria-label="Chiudi">×</button></div><p>Per assistenza sull'utilizzo di ATLAS SCU puoi contattare il referente:</p><div class="help-actions"><a href="tel:+393519589305" class="primary help-link">Chiama il 351 958 9305</a><a href="mailto:adriano.luongo@crigallarate.org" class="secondary help-link">adriano.luongo@crigallarate.org</a></div><div class="dialog-actions"><button id="helpCancel" type="button" class="secondary">Chiudi</button></div></div></dialog>
 
-  <script type="module" src="js/app-public.js?v=0.7.0"></script>
+  <script type="module" src="js/app-public.js?v=0.8.0"></script>
 </body>
 </html>
