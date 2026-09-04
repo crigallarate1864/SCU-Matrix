@@ -1,0 +1,13 @@
+ATLAS SCU - MODALITA AMMINISTRATORE UNICO SENZA LOGIN
+
+Nel file Code.gs del progetto Google Apps Script sostituire questa riga:
+
+const user=requireSession_(body.token);
+
+con questa:
+
+const user={userId:'PUBLIC_ADMIN',username:'admin.scu',name:'Amministratore SCU',role:SCU.ROLE};
+
+Poi salvare e creare una nuova distribuzione della Web App mantenendo lo stesso accesso pubblico usato dal frontend.
+
+Le funzioni login/session/logout possono restare nel file: il frontend non le utilizza piu.
