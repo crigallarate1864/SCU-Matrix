@@ -4,18 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#081019">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>ATLAS SCU</title>
-  <link rel="icon" href="assets/atlas-scu-logo.svg?v=2" type="image/svg+xml">
-  <link rel="stylesheet" href="css/app-v2.css?v=0.5.0">
+  <link rel="icon" href="assets/atlas-scu-logo.svg?v=4" type="image/svg+xml">
+  <link rel="stylesheet" href="css/app-v2.css?v=0.6.0">
 </head>
 <body>
   <div class="app-shell">
     <aside class="sidebar" id="sidebar">
-      <a class="app-brand" href="#dashboard" aria-label="ATLAS SCU"><img src="assets/atlas-scu-logo.svg?v=2" alt="ATLAS SCU · Servizio Civile Universale"></a>
+      <a class="app-brand" href="#dashboard" aria-label="ATLAS SCU"><img src="assets/atlas-scu-logo.svg?v=4" alt="ATLAS SCU · Servizio Civile Universale"></a>
       <nav class="nav" id="mainNav">
         <button data-view="dashboard" class="active"><span>◫</span> Dashboard</button><button data-view="calendar"><span>▦</span> Calendario</button><button data-view="operators"><span>◎</span> Operatori SCU</button><button data-view="olp"><span>◉</span> OLP</button><button data-view="absences"><span>⌁</span> Assenze e permessi</button><button data-view="training"><span>◇</span> Formazione</button><button data-view="deadlines"><span>◷</span> Scadenze</button><button data-view="settings"><span>⚙</span> Impostazioni</button>
       </nav>
-      <div class="sidebar-foot"><button id="helpButton" class="help-button" type="button">Hai bisogno di aiuto?</button><div class="user-chip"><span class="avatar">A</span><div><strong id="userName">Amministratore SCU</strong><small>Amministratore SCU</small></div></div><button id="logoutButton" class="logout" type="button">Esci</button></div>
+      <div class="sidebar-foot"><button id="helpButton" class="help-button" type="button">Hai bisogno di aiuto?</button><div class="user-chip"><span class="avatar">A</span><div><strong id="userName">Amministratore SCU</strong><small>Amministratore SCU</small></div></div></div>
     </aside>
     <main class="main">
       <header class="topbar"><div><button id="sidebarToggle" class="icon-button" aria-label="Apri menu" type="button">☰</button><div class="heading-wrap"><span id="viewKicker">ATLAS SCU</span><h1 id="viewTitle">Dashboard</h1></div></div><div class="top-actions"><span id="backendStatus" class="status-pill"><i></i> Backend</span><button id="refreshButton" class="secondary" type="button">Aggiorna</button></div></header>
@@ -33,6 +34,6 @@
   <dialog id="editorDialog" class="editor-dialog"><form id="editorForm"><div class="dialog-head"><div><span id="dialogKicker">ATLAS SCU</span><h2 id="dialogTitle">Modifica</h2></div><button id="dialogClose" type="button" class="dialog-close" aria-label="Chiudi">×</button></div><div id="dialogFields" class="dialog-fields"></div><div class="dialog-actions"><button id="dialogCancel" type="button" class="secondary">Annulla</button><button id="dialogSave" type="submit" class="primary">Salva</button></div></form></dialog>
   <dialog id="generatorDialog" class="editor-dialog"><form id="generatorForm"><div class="dialog-head"><div><span>GENERAZIONE AUTOMATICA</span><h2>Genera calendario mensile</h2></div><button id="generatorClose" type="button" class="dialog-close" aria-label="Chiudi">×</button></div><div class="dialog-fields"></div><div class="dialog-actions"><button id="generatorCancel" type="button" class="secondary">Annulla</button><button id="generatorSave" type="submit" class="primary">Genera calendario</button></div></form></dialog>
   <dialog id="helpDialog" class="editor-dialog help-dialog"><div class="help-content"><div class="dialog-head"><div><span>ASSISTENZA ATLAS SCU</span><h2>Hai bisogno di aiuto?</h2></div><button id="helpClose" type="button" class="dialog-close" aria-label="Chiudi">×</button></div><p>Per assistenza sull'utilizzo di ATLAS SCU puoi contattare il referente:</p><div class="help-actions"><a href="tel:+393519589305" class="primary help-link">Chiama il 351 958 9305</a><a href="mailto:adriano.luongo@crigallarate.org" class="secondary help-link">adriano.luongo@crigallarate.org</a></div><div class="dialog-actions"><button id="helpCancel" type="button" class="secondary">Chiudi</button></div></div></dialog>
-  <script type="module" src="js/app-v5.js?v=0.5.1"></script>
+  <script type="module" src="js/app-public.js?v=0.6.0"></script>
 </body>
 </html>
