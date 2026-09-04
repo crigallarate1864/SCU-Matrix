@@ -13,16 +13,13 @@ function render(data){
   const training=data.training||[];
   const projects=data.projects||[];
   const settings=data.settings||{};
-
   const projectTitle=id=>val(projects.find(p=>String(val(p,'ID_PROGETTO','id'))===String(id)),'TITOLO','title')||'—';
   const byOp=(rows,id,key='OPERATORE_ID')=>rows.filter(r=>String(val(r,key,'operatorId'))===String(id));
 
   let totalEffective=0,totalAbs=0,totalTraining=0;
   const cards=operators.map(op=>{
     const id=String(val(op,'ID_OPERATORE','id'));
-    const cal=byOp(calendar,id);
-    const abs=byOp(absences,id);
-    const tr=byOp(training,id);
+    const cal=byOp(calendar,id),abs=byOp(absences,id),tr=byOp(training,id);
     const effective=cal.reduce((s,r)=>s+(Number(val(r,'ORE_EFFETTIVE','effectiveHours'))||0),0);
     const recognized=cal.reduce((s,r)=>s+(Number(val(r,'ORE_RICONOSCIUTE','recognizedHours'))||0),0);
     const trainingHours=tr.reduce((s,r)=>s+(Number(val(r,'ORE','hours'))||0),0);
@@ -34,7 +31,7 @@ function render(data){
     const project=projects.find(p=>String(val(p,'ID_PROGETTO','id'))===String(val(op,'PROGETTO_ID','projectId')));
     const target=Number(val(project,'MONTE_ORE','annualHours'))||Number(settings.annualHours)||1145;
     const pct=Math.max(0,Math.min(100,(recognized/target)*100));
-    totalEffective+=effective; totalAbs+=abs.length; totalTraining+=trainingHours;
+    totalEffective+=effective;totalAbs+=abs.length;totalTraining+=trainingHours;
     return `<article class="scu-person-card">
       <header><div><strong>${esc(name(op))}</strong><span>${esc(projectTitle(val(op,'PROGETTO_ID','projectId')))}</span></div><b>${fmt(recognized)} / ${fmt(target)} h</b></header>
       <div class="scu-person-stats">
@@ -52,22 +49,22 @@ function render(data){
   if($('#metricAbsences'))$('#metricAbsences').textContent=totalAbs;
   if($('#metricTraining'))$('#metricTraining').textContent=fmt(totalTraining);
   const host=$('#hoursProgress');
-  if(host){
-    host.className=operators.length?'operator-overview':'operator-overview empty-state';
-    host.innerHTML=operators.length?cards:'Nessun operatore attivo.';
-  }
-
+  if(host){host.className=operators.length?'operator-overview':'operator-overview empty-state';host.innerHTML=operators.length?cards:'Nessun operatore attivo.';}
   removeOlpSettings();
 }
 
 function removeOlpSettings(){
   document.querySelector('[data-view="olp"]')?.remove();
-  const olpInput=$('#setting-minWeeklyOlpHours');
-  olpInput?.closest('.settings-card')?.remove();
+  $('#setting-minWeeklyOlpHours')?.closest('.settings-card')?.remove();
+}
+function renderSoon(data){
+  render(data);
+  setTimeout(()=>render(data),0);
+  setTimeout(()=>render(data),120);
 }
 
-window.addEventListener('atlas:bootstrap',e=>render(e.detail));
-if(window.__ATLAS_BOOTSTRAP__)render(window.__ATLAS_BOOTSTRAP__);
+window.addEventListener('atlas:bootstrap',e=>renderSoon(e.detail));
+if(window.__ATLAS_BOOTSTRAP__)renderSoon(window.__ATLAS_BOOTSTRAP__);
 
 const observer=new MutationObserver(()=>removeOlpSettings());
 const settings=$('#settingsGrid');
