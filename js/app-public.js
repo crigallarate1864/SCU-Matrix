@@ -1,20 +1,11 @@
 import { SESSION_KEY } from './config.js';
 
-// Modalità amministratore unico: nessuna pagina di accesso.
-// Il backend in modalità pubblica ignora il token e usa il profilo amministratore fisso.
-const publicSession = {
-  token: 'PUBLIC_ADMIN',
-  user: {
-    id: 'PUBLIC_ADMIN',
-    username: 'admin.scu',
-    name: 'Amministratore SCU',
-    role: 'AMMINISTRATORE_SCU'
-  },
-  expiresAt: ''
+const publicSession={
+  token:'PUBLIC_ADMIN',
+  user:{id:'PUBLIC_ADMIN',username:'admin.scu',name:'Amministratore SCU',role:'AMMINISTRATORE_SCU'},
+  expiresAt:''
 };
+try{sessionStorage.setItem(SESSION_KEY,JSON.stringify(publicSession));}catch{}
 
-try {
-  sessionStorage.setItem(SESSION_KEY, JSON.stringify(publicSession));
-} catch {}
-
-await import('./app-v5.js?v=0.6.0');
+await import('./bootstrap-cache-v1.js?v=0.7.0');
+await import('./app-v7.js?v=0.7.0');
