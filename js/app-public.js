@@ -7,5 +7,5 @@ const publicSession={
 };
 try{sessionStorage.setItem(SESSION_KEY,JSON.stringify(publicSession));}catch{}
 
-await import('./bootstrap-cache-v1.js?v=0.7.0');
-await import('./app-v7.js?v=0.7.0');
+await import('./bootstrap-cache-v1.js?v=0.8.0');
+await import('./app-v7.js?v=0.8.0');
