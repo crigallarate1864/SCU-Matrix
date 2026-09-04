@@ -87,6 +87,18 @@
   text-decoration:none;
 }
 
+.mail-dialog{width:min(820px,calc(100vw - 30px))}
+.mail-dialog-content{padding:22px}
+.mail-dialog .dialog-note{margin:18px 0}
+.mail-field{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 10px;align-items:end;margin-top:14px}
+.mail-field>span{grid-column:1/-1;color:#b6c4cf;font-size:12px;font-weight:750}
+.mail-field input,.mail-field textarea{width:100%;border:1px solid rgba(255,255,255,.09);border-radius:10px;background:#08121b;color:#fff;padding:10px 12px;resize:vertical;outline:none}
+.mail-field input{height:42px}
+.mail-field input:focus,.mail-field textarea:focus{border-color:rgba(158,220,244,.45);box-shadow:0 0 0 3px rgba(158,220,244,.06)}
+.mail-field .small{align-self:end}
+.mail-body{min-height:320px;line-height:1.45}
+.mail-warning{min-height:18px;margin-top:5px;color:#f5c76f;font-size:11px}
+
 .operator-overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .scu-person-card{
   border:1px solid rgba(255,255,255,.09);
@@ -114,8 +126,13 @@
 @media(max-width:820px){
   .toolbar-actions{width:100%;flex-wrap:wrap}
   .toolbar-actions .primary,.toolbar-actions .secondary{flex:1 1 180px}
+  .mail-field{grid-template-columns:1fr}
+  .mail-field>span{grid-column:auto}
+  .mail-field button{width:100%}
 }
 @media(max-width:600px){
   .scu-person-stats{grid-template-columns:1fr 1fr}
   .scu-person-stats>div:last-child{grid-column:1/-1}
+  .mail-dialog-content{padding:17px}
+  .mail-body{min-height:280px}
 }
